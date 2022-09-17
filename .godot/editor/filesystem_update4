@@ -1,0 +1,5 @@
+res://Classes/BaseCharacter.gd
+res://Systems/MatchManager.gd
+res://Classes/BaseFighter.gd
+res://Stages/TestStage.tscn
+res://Environments/BaseEnvironment.tres

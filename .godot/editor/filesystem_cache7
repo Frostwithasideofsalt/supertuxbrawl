@@ -1,3 +1,10 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1663449178
+::res://::1663450237
 icon.svg::CompressedTexture2D::4405068775326894398::1663449172::1663449179::1::::<><>::
+::res://Classes/::1663450200
+BaseFighter.gd::GDScript::-1::1663450200::0::1::::BaseFighter<>CharacterBody3D<>::
+::res://Fighters/::1663450237
+::res://Stages/::1663450217
+TestStage.tscn::PackedScene::5776835653744832499::1663450217::0::1::::<><>::
+::res://Systems/::1663450144
+MatchManager.gd::GDScript::-1::1663450144::0::1::::MatchManager<>Node<>::
