@@ -1,5 +1,9 @@
-res://Classes/BaseCharacter.gd
-res://Systems/MatchManager.gd
-res://Classes/BaseFighter.gd
-res://Stages/TestStage.tscn
 res://Environments/BaseEnvironment.tres
+res://Stages/TestStageOLD.tscn
+res://Assets/Resources/StageTilesetBase.tres
+res://Scenes/Intro.tscn
+res://Scenes/Menu.tscn
+res://Stages/TestStage.tscn
+res://Assets/Resources/StageTileMap.tscn
+res://Classes/BaseFighter.gd
+res://Classes/Stage.gd
