@@ -62,6 +62,8 @@ func _physics_process(delta):
 			dodge_timer.start(0.5)
 			dodging = true
 			can_dodge = false
+			passthrough_platforms = false
+			self.set_collision_mask_value(2, true)
 		if move_direction:
 			velocity.x = move_direction * (RUN_SPEED if running else SPEED)
 		else:
