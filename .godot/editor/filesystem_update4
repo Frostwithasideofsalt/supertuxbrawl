@@ -10,3 +10,4 @@ res://Systems/Main.tscn
 res://Systems/Main.gd
 res://Systems/MatchManager.tscn
 res://Scenes/Menu.gd
+res://Scenes/Intro.gd
