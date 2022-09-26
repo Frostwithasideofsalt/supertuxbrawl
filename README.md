@@ -5,7 +5,6 @@ SuperTuxBrawl's code and assets are licensed under the GNU General Public Licens
 ## 0.1.0
 - [ ] Implement a BaseFighter that can be used to easily extend for new fighters
 - [ ] Implement system to start/end games
-- [ ] Implement base case
 - [ ] Implement fighter unlocking
 - [ ] Implement stage system
 - [ ] Implement hazards for stages
