@@ -1,9 +1,7 @@
 res://Environments/BaseEnvironment.tres
-res://Stages/TestStageOLD.tscn
-res://Assets/Resources/StageTilesetBase.tres
 res://Scenes/Intro.tscn
+res://Assets/Resources/StageTilesetBase.tres
 res://Scenes/Menu.tscn
 res://Stages/TestStage.tscn
 res://Assets/Resources/StageTileMap.tscn
 res://Classes/BaseFighter.gd
-res://Classes/Stage.gd

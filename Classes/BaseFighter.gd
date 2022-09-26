@@ -36,10 +36,10 @@ func _physics_process(delta):
 		if is_on_floor():
 			can_dodge = true
 		
-		if is_on_floor() and passthrough_platforms:
-			position.y += 1
-			velocity.y += (GRAVITY * delta)
-			velocity = old_velocity
+		if passthrough_platforms:
+			self.set_collision_mask_value(2, false)
+		else:
+			self.set_collision_mask_value(2, true)
 		# Handle Jump.
 		if Input.is_action_just_pressed("jump") and jumps > 0:
 			velocity.y = JUMP_VELOCITY * (1.0 if jumps == MAX_JUMPS else SECONDARY_JUMP_MOD)
