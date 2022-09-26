@@ -13,6 +13,7 @@ script = ExtResource("1_j8u63")
 [node name="CharacterBody2d" type="CharacterBody2D" parent="."]
 position = Vector2(-13, -114)
 collision_mask = 3
+floor_snap_length = 8.0
 script = ExtResource("1_hmo8g")
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="CharacterBody2d"]

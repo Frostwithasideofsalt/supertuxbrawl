@@ -1,7 +1,6 @@
-res://Environments/BaseEnvironment.tres
-res://Scenes/Intro.tscn
-res://Assets/Resources/StageTilesetBase.tres
-res://Scenes/Menu.tscn
 res://Stages/TestStage.tscn
-res://Assets/Resources/StageTileMap.tscn
+res://Assets/Resources/StageTilesetBase.tres
 res://Classes/BaseFighter.gd
+res://Scenes/Intro.tscn
+res://Scenes/Menu.tscn
+res://Assets/Resources/StageTileMap.tscn

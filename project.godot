@@ -76,5 +76,4 @@ jump={
 [rendering]
 
 vulkan/rendering/back_end=1
-environment/defaults/default_environment="res://Environments/BaseEnvironment.tres"
 textures/canvas_textures/default_texture_filter=0
