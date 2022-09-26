@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"MatchManager",
 "language": &"GDScript",
 "path": "res://Systems/MatchManager.gd"
+}, {
+"base": "Node2D",
+"class": &"Stage",
+"language": &"GDScript",
+"path": "res://Classes/Stage.gd"
 }]
 _global_script_class_icons={
-"MatchManager": ""
+"MatchManager": "",
+"Stage": ""
 }
 
 [application]
@@ -24,6 +30,10 @@ config/name="SuperTuxBrawl"
 run/main_scene="res://Scenes/Intro.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Main="*res://Systems/Main.tscn"
 
 [display]
 

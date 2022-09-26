@@ -19,7 +19,7 @@ var old_velocity: Vector2 = Vector2.ZERO
 
 var dodge_timer = Timer.new()
 
-# Will probably go up to 7 (for player 8)
+# Will probably go up to 3 (for player 4)
 var playerid = 0
 var is_cpu: bool = false
 

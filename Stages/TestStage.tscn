@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_os6o0"]
 size = Vector2(16, 32)
 
-[node name="Stage" type="Node2D"]
+[node name="TestStage" type="Node2D"]
 script = ExtResource("1_j8u63")
 
 [node name="CharacterBody2d" type="CharacterBody2D" parent="."]
@@ -18,10 +18,6 @@ script = ExtResource("1_hmo8g")
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="CharacterBody2d"]
 shape = SubResource("RectangleShape2D_os6o0")
-
-[node name="Camera2d" type="Camera2D" parent="CharacterBody2d"]
-current = true
-zoom = Vector2(2, 2)
 
 [node name="Hitbox" type="Area2D" parent="CharacterBody2d"]
 
