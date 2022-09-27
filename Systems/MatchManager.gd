@@ -5,6 +5,11 @@ class_name MatchManager
 @onready var stage_camera = Camera2D.new()
 var stage: Stage
 
+@onready var kill_check = $KillCheck
+
+var stocks = []
+var players_left = 0
+
 func _ready():
 	stage = load(Main.stage_to_load).instantiate()
 	stage.name = "Stage"
@@ -17,7 +22,8 @@ func _ready():
 	stage_camera.limit_right = stage.stage_bounds.x / 2
 	stage_camera.limit_top = -stage.stage_bounds.y / 2
 	stage_camera.limit_bottom = stage.stage_bounds.y / 2
-	stage_camera.current = true
+	kill_check.get_node("CollisionShape2d").shape.size = stage.stage_bounds
+	#stage_camera.current = true
 	place_fighters()
 	stage.add_child(stage_camera)
 	add_child(_game_timer)
@@ -29,6 +35,17 @@ func place_fighters():
 		var fighter: BaseFighter = load(fighter_paths[int(Main.player_data[i][1])] % Main.player_data[i][0]).instantiate()
 		fighter.name = "c" + str(i)
 		fighter.position = stage.get_node("PlayerSpawn" + str(i)).position
-		fighter.position.y -= fighter.HEIGHT / 2
+		fighter.position.y -= float(fighter.HEIGHT) / 2
+		fighter.playerid = i
 		stage.add_child(fighter)
 		stage.get_node("PlayerSpawn0").queue_free()
+		stocks.append(Main.stocks)
+		players_left += 1
+
+func _on_kill_check_body_exited(body):
+	if body is BaseFighter:
+		body.is_dead = true
+		body.position = stage.stage_respawn_point
+		stocks[body.playerid] -= 1
+		if stocks[body.playerid] > 0: body.respawn_timer.start(4)
+		else: players_left -= 1

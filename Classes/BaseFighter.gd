@@ -21,14 +21,20 @@ var passthrough_platforms: bool = true
 var old_velocity: Vector2 = Vector2.ZERO
 
 var dodge_timer = Timer.new()
+var respawn_timer = Timer.new()
 
 # Will probably go up to 3 (for player 4)
 var playerid = 0
 var is_cpu: bool = false
+var is_dead: bool = false
+var is_respawning: bool = false
 
 func _ready():
 	dodge_timer.one_shot = true
 	add_child(dodge_timer)
+	respawn_timer.one_shot = true
+	respawn_timer.connect("timeout", respawn)
+	add_child(respawn_timer)
 
 func _physics_process(delta):
 	if dodge_timer.time_left == 0.0:
@@ -42,11 +48,15 @@ func _physics_process(delta):
 	move_and_slide()
 
 func movement(delta: float):
+	if is_dead:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	if dodging:
 		dodging = false
 	passthrough_platforms = Input.is_action_pressed("ui_down")
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and !is_respawning:
 		velocity.y = min(velocity.y + (GRAVITY * delta), MAX_Y_VELOCITY * (1.5 if passthrough_platforms else 1.0))
 	elif jumps != MAX_JUMPS:
 		jumps = MAX_JUMPS
@@ -87,3 +97,6 @@ func movement(delta: float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	old_velocity = velocity
+
+func respawn():
+	is_dead = false
