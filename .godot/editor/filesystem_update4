@@ -10,3 +10,4 @@ res://Systems/MatchManager.gd
 res://Classes/Stage.gd
 res://Scenes/Menu.gd
 res://Classes/BaseFighter.gd
+res://Systems/Main.gd

@@ -24,9 +24,11 @@ func _ready():
 	_game_timer.start()
 
 func place_fighters():
-	var fighter: BaseFighter = load("res://Fighters/TestFighter.tscn").instantiate()
-	fighter.name = "c0"
-	fighter.position = stage.get_node("PlayerSpawn0").position
-	fighter.position.y -= fighter.HEIGHT / 2
-	stage.add_child(fighter)
-	stage.get_node("PlayerSpawn0").queue_free()
+	var fighter_paths = ["res://Fighters/%s.tscn", "res://Fighters/%s.tscn"]
+	for i in range(Main.players):
+		var fighter: BaseFighter = load(fighter_paths[int(Main.player_data[i][1])] % Main.player_data[i][0]).instantiate()
+		fighter.name = "c" + str(i)
+		fighter.position = stage.get_node("PlayerSpawn" + str(i)).position
+		fighter.position.y -= fighter.HEIGHT / 2
+		stage.add_child(fighter)
+		stage.get_node("PlayerSpawn0").queue_free()
