@@ -34,6 +34,8 @@ _global_script_class_icons={
 
 config/name="SuperTuxBrawl"
 run/main_scene="res://Scenes/Intro.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="SuperTuxBrawl"
 config/features=PackedStringArray("4.0", "Vulkan Mobile")
 config/icon="res://icon.svg"
 
