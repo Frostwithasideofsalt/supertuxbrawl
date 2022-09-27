@@ -24,7 +24,7 @@ func _ready():
 	_game_timer.start()
 
 func place_fighters():
-	var fighter: BaseFighter = BaseFighter.new()
+	var fighter: BaseFighter = load("res://Fighters/TestFighter.tscn").instantiate()
 	fighter.name = "c0"
 	fighter.position = stage.get_node("PlayerSpawn0").position
 	fighter.position.y -= fighter.HEIGHT / 2
