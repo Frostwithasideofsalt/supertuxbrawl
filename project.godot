@@ -9,7 +9,12 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "Node",
+"base": "CharacterBody2D",
+"class": &"BaseFighter",
+"language": &"GDScript",
+"path": "res://Classes/BaseFighter.gd"
+}, {
+"base": "Node2D",
 "class": &"MatchManager",
 "language": &"GDScript",
 "path": "res://Systems/MatchManager.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[{
 "path": "res://Classes/Stage.gd"
 }]
 _global_script_class_icons={
+"BaseFighter": "",
 "MatchManager": "",
 "Stage": ""
 }

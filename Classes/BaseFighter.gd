@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BaseFighter
 
 const SPEED = 150.0
 const RUN_SPEED = 230.0
@@ -8,6 +9,8 @@ const GRAVITY = 950
 const MAX_Y_VELOCITY = 400
 const MAX_JUMPS = 2
 const SECONDARY_JUMP_MOD = 0.9
+const WIDTH = 16
+const HEIGHT = 30
 
 var jumps: int = MAX_JUMPS
 var running: bool = true
@@ -23,7 +26,18 @@ var dodge_timer = Timer.new()
 var playerid = 0
 var is_cpu: bool = false
 
+var collision_shape = CollisionShape2D.new()
+var hitbox = Area2D.new()
+var hitbox_shape = CollisionShape2D.new()
+var shared_rectangle_shape = RectangleShape2D.new()
+
 func _ready():
+	shared_rectangle_shape.size = Vector2(WIDTH, HEIGHT)
+	collision_shape.shape = shared_rectangle_shape
+	hitbox_shape.shape = shared_rectangle_shape
+	add_child(hitbox)
+	hitbox.add_child(hitbox_shape)
+	add_child(collision_shape)
 	dodge_timer.one_shot = true
 	add_child(dodge_timer)
 

@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name MatchManager
 
 @onready var _game_timer = Timer.new()
@@ -13,15 +13,20 @@ func _ready():
 	add_child(stage)
 	stage_camera.zoom.x = 2.0
 	stage_camera.zoom.y = 2.0
-	stage_camera.limit_left = -stage.stage_bounds.x
-	stage_camera.limit_right = stage.stage_bounds.x
-	stage_camera.limit_top = -stage.stage_bounds.y
-	stage_camera.limit_bottom = stage.stage_bounds.y
+	stage_camera.limit_left = -stage.stage_bounds.x / 2
+	stage_camera.limit_right = stage.stage_bounds.x / 2
+	stage_camera.limit_top = -stage.stage_bounds.y / 2
+	stage_camera.limit_bottom = stage.stage_bounds.y / 2
 	stage_camera.current = true
-	add_child(stage_camera)
+	place_fighters()
+	stage.add_child(stage_camera)
 	add_child(_game_timer)
 	_game_timer.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func place_fighters():
+	var fighter: BaseFighter = BaseFighter.new()
+	fighter.name = "c0"
+	fighter.position = stage.get_node("PlayerSpawn0").position
+	fighter.position.y -= fighter.HEIGHT / 2
+	stage.add_child(fighter)
+	stage.get_node("PlayerSpawn0").queue_free()
