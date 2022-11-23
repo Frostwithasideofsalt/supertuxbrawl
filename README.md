@@ -9,3 +9,5 @@ SuperTuxBrawl's code and assets are licensed under the GNU General Public Licens
 - [ ] Implement stage system
 - [ ] Implement hazards for stages
 - [ ] Implement main menu
+- [ ] Implement character builder
+- [ ] Implement stage builder
