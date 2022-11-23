@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://w8x37svhp10e"]
+
+[ext_resource type="Script" path="res://Systems/MatchManager.gd" id="1_a8ref"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8fia"]
+size = Vector2(20, 9999)
+
+[node name="MatchManager" type="Node2D"]
+script = ExtResource("1_a8ref")
+
+[node name="KillCheck" type="Area2D" parent="."]
+visible = false
+show_behind_parent = true
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="KillCheck"]
+shape = SubResource("RectangleShape2D_q8fia")
+
+[connection signal="body_exited" from="KillCheck" to="." method="_on_kill_check_body_exited"]

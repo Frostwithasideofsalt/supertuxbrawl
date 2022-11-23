@@ -9,7 +9,17 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Area2D",
+"class": &"AttackHitbox",
+"language": &"GDScript",
+"path": "res://Classes/AttackHitbox.gd"
+}, {
 "base": "CharacterBody2D",
+"class": &"BaseActor",
+"language": &"GDScript",
+"path": "res://Classes/BaseActor.gd"
+}, {
+"base": "BaseActor",
 "class": &"BaseFighter",
 "language": &"GDScript",
 "path": "res://Classes/BaseFighter.gd"
@@ -25,6 +35,8 @@ _global_script_classes=[{
 "path": "res://Classes/Stage.gd"
 }]
 _global_script_class_icons={
+"AttackHitbox": "",
+"BaseActor": "",
 "BaseFighter": "",
 "MatchManager": "",
 "Stage": ""

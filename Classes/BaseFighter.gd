@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends BaseActor
 class_name BaseFighter
 
 const SPEED = 150.0
@@ -24,7 +24,7 @@ var dodge_timer = Timer.new()
 var respawn_timer = Timer.new()
 
 # Will probably go up to 3 (for player 4)
-var playerid = 0
+var playerid = -1
 var is_cpu: bool = false
 var is_dead: bool = false
 var is_respawning: bool = false
@@ -47,10 +47,13 @@ func _physics_process(delta):
 			velocity.y *= 0.9
 	move_and_slide()
 
-func movement(delta: float):
+func movement(delta: float) -> void:
 	if is_dead:
 		velocity = Vector2.ZERO
 		move_and_slide()
+		return
+	if is_cpu:
+		ai(delta)
 		return
 	if dodging:
 		dodging = false
@@ -97,6 +100,14 @@ func movement(delta: float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	old_velocity = velocity
+	
+	if Input.is_action_just_pressed("ui_focus_next"):
+		var shape = RectangleShape2D.new()
+		shape.size = Vector2(20, 20)
+		add_child(AttackHitbox.new(1.5, shape))
+
+func ai(delta: float) -> void:
+	pass
 
 func respawn():
 	is_dead = false
