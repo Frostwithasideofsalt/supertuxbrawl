@@ -110,7 +110,7 @@ func movement(delta: float) -> void:
 
 func ai(delta: float) -> void:
 	#print(velocity)
-	velocity.x = move_toward(velocity.x, 0, DECELERATE / delta)
+	velocity.x = move_toward(velocity.x, 0, 0.05 / delta)
 	if not is_on_floor():
 		velocity.y = min(velocity.y + (GRAVITY * delta), MAX_Y_VELOCITY * (1.5 if passthrough_platforms else 1.0))
 	#print(velocity)
