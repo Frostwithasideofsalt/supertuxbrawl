@@ -10,6 +10,9 @@ var stage: Stage
 var stocks = []
 var players_left = 0
 
+func _init(hazards: bool = false):
+	pass
+
 func _ready():
 	stage = load(Main.stage_to_load).instantiate()
 	stage.name = "Stage"
@@ -39,7 +42,7 @@ func place_fighters():
 		fighter.position.y -= float(fighter.HEIGHT) / 2
 		fighter.playerid = i
 		stage.add_child(fighter)
-		stage.get_node("PlayerSpawn0").queue_free()
+		stage.get_node("PlayerSpawn" + str(i)).queue_free()
 		stocks.append(Main.stocks)
 		players_left += 1
 
@@ -48,5 +51,13 @@ func _on_kill_check_body_exited(body):
 		body.is_dead = true
 		body.position = stage.stage_respawn_point
 		stocks[body.playerid] -= 1
+		body.get_node("Hitbox").set_deferred("monitorable", false)
 		if stocks[body.playerid] > 0: body.respawn_timer.start(4)
-		else: players_left -= 1
+		else:
+			players_left -= 1
+			if players_left == 1:
+				for stock in range(len(stocks)):
+					if stocks[stock] != 0:
+						Main.winner = stock
+						break
+				get_tree().change_scene_to_file("res://Scenes/ResultsStage.tscn")

@@ -11,6 +11,7 @@ script = ExtResource("1_a8ref")
 [node name="KillCheck" type="Area2D" parent="."]
 visible = false
 show_behind_parent = true
+collision_mask = 7
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="KillCheck"]
 shape = SubResource("RectangleShape2D_q8fia")

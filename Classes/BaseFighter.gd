@@ -5,6 +5,7 @@ const SPEED = 150.0
 const RUN_SPEED = 230.0
 const DODGE_SPEED = 300.0
 const JUMP_VELOCITY = -234.0
+const DECELERATE = 1.0
 const GRAVITY = 950
 const MAX_Y_VELOCITY = 400
 const MAX_JUMPS = 2
@@ -50,7 +51,6 @@ func _physics_process(delta):
 func movement(delta: float) -> void:
 	if is_dead:
 		velocity = Vector2.ZERO
-		move_and_slide()
 		return
 	if is_cpu:
 		ai(delta)
@@ -80,6 +80,8 @@ func movement(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var move_direction = Input.get_axis("ui_left", "ui_right")
+	if move_direction != 0.0:
+		looking_right = move_direction > 0.0
 	if Input.is_action_just_pressed("dodge") and can_dodge:
 		dodge_started_on_ground = is_on_floor()
 		if !dodge_started_on_ground:
@@ -96,18 +98,24 @@ func movement(delta: float) -> void:
 		passthrough_platforms = false
 		self.set_collision_mask_value(2, true)
 	if move_direction:
-		velocity.x = move_direction * (RUN_SPEED if running else SPEED)
+		velocity.x = clamp(velocity.x + (move_direction * RUN_SPEED if running else SPEED), -RUN_SPEED if running else -SPEED, RUN_SPEED if running else SPEED)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, DECELERATE / delta)
 	old_velocity = velocity
 	
 	if Input.is_action_just_pressed("ui_focus_next"):
 		var shape = RectangleShape2D.new()
 		shape.size = Vector2(20, 20)
-		add_child(AttackHitbox.new(1.5, shape))
+		add_child(AttackHitbox.new(1.5, shape, looking_right))
 
 func ai(delta: float) -> void:
-	pass
+	#print(velocity)
+	velocity.x = move_toward(velocity.x, 0, DECELERATE / delta)
+	if not is_on_floor():
+		velocity.y = min(velocity.y + (GRAVITY * delta), MAX_Y_VELOCITY * (1.5 if passthrough_platforms else 1.0))
+	#print(velocity)
 
 func respawn():
+	$CollisionShape2d.set_deferred("monitorable", true)
+	health = 0.0
 	is_dead = false

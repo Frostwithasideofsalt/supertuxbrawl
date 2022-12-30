@@ -12,11 +12,8 @@ grow_vertical = 2
 script = ExtResource("1_8vafw")
 
 [node name="debug" type="Button" parent="."]
-layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "debug"
-
-[node name="Area2d" type="Area2D" parent="."]
 
 [connection signal="pressed" from="debug" to="." method="_on_debug_pressed"]

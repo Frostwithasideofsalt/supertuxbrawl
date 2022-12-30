@@ -46,7 +46,7 @@ _global_script_class_icons={
 
 config/name="SuperTuxBrawl"
 run/main_scene="res://Scenes/Intro.tscn"
-config/features=PackedStringArray("4.0", "Vulkan Mobile")
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -103,5 +103,5 @@ jump={
 
 [rendering]
 
-vulkan/rendering/back_end=1
 textures/canvas_textures/default_texture_filter=0
+vulkan/rendering/back_end=1
