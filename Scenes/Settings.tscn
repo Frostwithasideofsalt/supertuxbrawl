@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://tmlefafdvk4g"]
+
+[ext_resource type="Script" path="res://Scenes/Settings.gd" id="1_1rrjd"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_1rrjd")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="return" type="Button" parent="TabContainer/Main"]
+layout_mode = 2
+text = "Return to main menu"
+
+[node name="LICENSE" type="RichTextLabel" parent="TabContainer"]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+
+[connection signal="pressed" from="TabContainer/Main/return" to="." method="_on_return_pressed"]

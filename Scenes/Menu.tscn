@@ -16,4 +16,11 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "debug"
 
+[node name="settings" type="Button" parent="."]
+offset_top = 25.0
+offset_right = 95.0
+offset_bottom = 50.0
+text = "Settings"
+
 [connection signal="pressed" from="debug" to="." method="_on_debug_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

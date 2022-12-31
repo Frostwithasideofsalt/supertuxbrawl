@@ -10,6 +10,8 @@ func _ready():
 func _process(_delta):
 	pass
 
-
 func _on_debug_pressed():
 	Main.load_stage("TestStage")
+
+func _on_settings_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Settings.tscn")
