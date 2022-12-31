@@ -4,6 +4,9 @@ class_name BaseActor
 var health: float = 0.0 # In Stamina battles, this should be health
 var looking_right: bool = true
 
+func _init():
+	Main.connect("debug_changed", change_color_shape_visibility)
+
 func movement(delta: float) -> void:
 	move_and_slide()
 
@@ -26,3 +29,9 @@ func damage(applied_damage: float, knockback: Vector2 = Vector2.ZERO, knockback_
 	velocity += applied_knockback
 	#print(health)
 	#print(velocity)
+
+func _exit_tree():
+	Main.disconnect("debug_changed", change_color_shape_visibility)
+
+func change_color_shape_visibility(debug: bool):
+	get_node("Hitbox/CollisionShape2d/DbgHitboxShape").visible = debug

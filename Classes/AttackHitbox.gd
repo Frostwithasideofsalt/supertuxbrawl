@@ -1,6 +1,8 @@
 extends Area2D
 class_name AttackHitbox
 
+var color_node: ColorRect
+
 var timer: Timer = Timer.new()
 var child_shape: CollisionShape2D
 var damage: float = 0.0
@@ -12,6 +14,8 @@ var look_right: bool = false
 var bodies_interacted_with = []
 
 func _init(time: float, shape: Shape2D, looking_right, attack_damage: float = 5.0, kb: Vector2 = Vector2(120.0, -80.0), kb_growth: Vector2 = Vector2(1.2, -0.3), at_angle: float = 0.0):
+	self.color_node = ColorRect.new()
+	self.color_node.color = "#00FF0084"
 	self.set_collision_mask_value(3, true)
 	self.position.x = 20 * (1 if looking_right else -1)
 	monitorable = false
@@ -28,8 +32,16 @@ func _init(time: float, shape: Shape2D, looking_right, attack_damage: float = 5.
 	timer.wait_time = time
 	timer.autostart = true
 	self.add_child(child_shape)
+	child_shape.add_child(color_node)
+	color_node.size = shape.size
+	color_node.anchors_preset = 8
 	self.add_child(timer)
 	self.connect("body_entered", body_entered)
+	Main.connect("debug_changed", change_color_shape_visibility)
+	color_node.visible = Main.debug
+
+func _exit_tree():
+	Main.disconnect("debug_changed", change_color_shape_visibility)
 
 ## Handles damaging fighters/actors
 func body_entered(body: Node):
@@ -41,3 +53,6 @@ func body_entered(body: Node):
 ## Deletes the hitbox when the timer expires.
 func expire():
 	self.queue_free()
+
+func change_color_shape_visibility(debug: bool):
+	color_node.visible = debug

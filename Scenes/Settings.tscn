@@ -7,10 +7,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_1rrjd")
 
 [node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,20 +19,22 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Main" type="VBoxContainer" parent="TabContainer"]
-layout_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 25.0
 
 [node name="return" type="Button" parent="TabContainer/Main"]
-layout_mode = 2
+offset_right = 800.0
+offset_bottom = 25.0
 text = "Return to main menu"
 
 [node name="Code License" type="RichTextLabel" parent="TabContainer"]
 visible = false
-layout_mode = 2
 bbcode_enabled = true
 
 [node name="Resource Licenses" type="RichTextLabel" parent="TabContainer"]
 visible = false
-layout_mode = 2
 bbcode_enabled = true
 text = "[center]
 [b][u]Fonts[/u][/b]
