@@ -18,15 +18,28 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Main" type="VBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="return" type="Button" parent="TabContainer/Main"]
 layout_mode = 2
 text = "Return to main menu"
 
-[node name="LICENSE" type="RichTextLabel" parent="TabContainer"]
+[node name="Code License" type="RichTextLabel" parent="TabContainer"]
 visible = false
 layout_mode = 2
 bbcode_enabled = true
+
+[node name="Resource Licenses" type="RichTextLabel" parent="TabContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]
+[b][u]Fonts[/u][/b]
+SuperTux Medium: GPL v3 (needs fact checking)
+
+[b][u]Graphics[/u][/b]
+SuperTuxBrawl Solid Tiles: Same as code license
+SuperTuxAdvance Tiles: GNU AGPLv3 (needs fact checking)
+[/center]"
 
 [connection signal="pressed" from="TabContainer/Main/return" to="." method="_on_return_pressed"]
