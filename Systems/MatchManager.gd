@@ -10,6 +10,8 @@ var stage: Stage
 var stocks = []
 var players_left = 0
 
+var target_camera_size: Vector2
+
 func _init(hazards: bool = false):
 	pass
 
@@ -31,6 +33,16 @@ func _ready():
 	stage.add_child(stage_camera)
 	add_child(_game_timer)
 	_game_timer.start()
+	target_camera_size = Vector2(ProjectSettings.get("display/window/size/viewport_width"), ProjectSettings.get("display/window/size/viewport_height"))
+
+func _process(delta):
+	var game_viewport = get_viewport_rect()
+	if (game_viewport.size != target_camera_size):
+		var new_zoom = Vector2(1, 1)
+		new_zoom.x = game_viewport.size.x / target_camera_size.x
+		new_zoom.y = game_viewport.size.y / target_camera_size.y
+		stage_camera.zoom = new_zoom
+		target_camera_size = game_viewport.size
 
 func place_fighters():
 	var fighter_paths = ["res://Fighters/%s.tscn", "res://Fighters/%s.tscn"]
