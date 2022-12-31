@@ -2,8 +2,7 @@ extends Node
 
 var license: Dictionary = {
 	"name" : "GNU GPLv3",
-	"content" : "",
-	"content-bbcode" : ""
+	"content" : ""
 }
 
 var stage_to_load: String = ""
@@ -18,8 +17,6 @@ var winner = -1
 func _init():
 	var read = FileAccess.open("res://LICENSE", FileAccess.READ)
 	license["content"] = read.get_as_text()
-	var bb_read = FileAccess.open("res://LICENSE.bbcode", FileAccess.READ)
-	license["content-bbcode"] = bb_read.get_as_text()
 	var license_string = "SuperTuxBrawl is provided under the GNU General Public License version 3 or above. For more information, see the license file that came with your distribution"
 	
 	print("SuperTuxBrawl is provided under the GNU General Public License version 3 or above.

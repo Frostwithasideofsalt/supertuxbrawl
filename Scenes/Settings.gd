@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$TabContainer/LICENSE.text = Main.license["content-bbcode"]
+	$TabContainer/LICENSE.text = "[center]" + Main.license["content"] + "[/center]"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
