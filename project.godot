@@ -58,6 +58,10 @@ Main="*res://Systems/Main.tscn"
 window/size/viewport_width=800
 window/size/viewport_height=600
 
+[gui]
+
+theme/custom_font="res://Assets/Fonts/SuperTux-Medium.ttf"
+
 [input]
 
 ui_left={
