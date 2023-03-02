@@ -36,4 +36,3 @@ grow_vertical = 2
 color = Color(1, 0, 0, 0.517647)
 
 [node name="Camera2d" type="Camera2D" parent="."]
-current = true

@@ -1,13 +1,13 @@
 extends CharacterBody2D
 class_name BaseActor
 
-var health: float = 0.0 # In Stamina battles, this should be health
+var health: float = 0.0 # In Stamina battles, this should be health. Otherwise, damage %
 var looking_right: bool = true
 
 func _init():
 	Main.connect("debug_changed", change_color_shape_visibility)
 
-func movement(delta: float) -> void:
+func movement(_delta: float) -> void:
 	move_and_slide()
 
 func ai(delta: float) -> void:

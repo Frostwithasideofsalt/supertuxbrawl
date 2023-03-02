@@ -11,7 +11,7 @@ func _process(_delta):
 	pass
 
 func _on_debug_pressed():
-	Main.load_stage("TestStage")
+	get_tree().change_scene_to_file("res://Scenes/StageList.tscn")
 
 func _on_settings_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Settings.tscn")

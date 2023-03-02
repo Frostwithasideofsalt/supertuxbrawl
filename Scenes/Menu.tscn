@@ -12,11 +12,13 @@ grow_vertical = 2
 script = ExtResource("1_8vafw")
 
 [node name="debug" type="Button" parent="."]
+layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "debug"
 
 [node name="settings" type="Button" parent="."]
+layout_mode = 0
 offset_top = 25.0
 offset_right = 95.0
 offset_bottom = 50.0

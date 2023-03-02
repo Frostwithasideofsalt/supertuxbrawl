@@ -4,6 +4,7 @@ class_name Stage
 @onready var stage_tile_map: TileMap = $StageTileMap
 @export var stage_bounds: Vector2 = Vector2(600,300)
 @export var stage_respawn_point: Vector2 = Vector2(0, -150)
+var use_hazards: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

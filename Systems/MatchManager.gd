@@ -4,6 +4,7 @@ class_name MatchManager
 @onready var _game_timer = Timer.new()
 @onready var stage_camera = Camera2D.new()
 var stage: Stage
+var stage_uses_hazards: bool
 
 @onready var kill_check = $KillCheck
 
@@ -14,10 +15,12 @@ var target_camera_size: Vector2
 
 func _init(hazards: bool = false):
 	Main.connect("debug_changed", change_solids_visibility)
+	stage_uses_hazards = hazards
 
 func _ready():
 	stage = load(Main.stage_to_load).instantiate()
 	stage.name = "Stage"
+	stage.use_hazards = stage_uses_hazards
 	stage_camera.name = "Stage Camera"
 	_game_timer.name = "GameTimer"
 	add_child(stage)
@@ -28,15 +31,16 @@ func _ready():
 	stage_camera.limit_top = -stage.stage_bounds.y / 2
 	stage_camera.limit_bottom = stage.stage_bounds.y / 2
 	kill_check.get_node("CollisionShape2d").shape.size = stage.stage_bounds
-	stage_camera.current = true
 	place_fighters()
 	stage.add_child(stage_camera)
+	stage_camera.make_current()
 	add_child(_game_timer)
 	_game_timer.start()
 	target_camera_size = Vector2(ProjectSettings.get("display/window/size/viewport_width"), ProjectSettings.get("display/window/size/viewport_height"))
 	get_node("Stage/StageTileMap").visible = Main.debug
 
-func _process(delta):
+func _process(_delta):
+	return
 	var game_viewport = get_viewport_rect()
 	if (game_viewport.size.x != target_camera_size.x or game_viewport.size.y != target_camera_size.y):
 		var new_zoom = Vector2(1, 1)
@@ -79,8 +83,8 @@ func _exit_tree():
 	Main.disconnect("debug_changed", change_solids_visibility)
 
 func change_solids_visibility(debug: bool):
-	var modulate = Color.from_string("#ffffff64", Color.RED)
+	var new_modulate = Color.from_string("#ffffff64", Color.RED)
 	if not debug:
-		modulate = Color.from_string("#ffffff00", Color.TRANSPARENT)
+		new_modulate = Color.from_string("#ffffff00", Color.TRANSPARENT)
 	var tilemap: TileMap = get_node("Stage/StageTileMap")
-	tilemap.set_layer_modulate(0, modulate)
+	tilemap.set_layer_modulate(0, new_modulate)

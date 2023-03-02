@@ -6,7 +6,7 @@ func _ready():
 	text.text = text.text % [Main.player_data[Main.winner][0], Main.winner + 1]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_button_pressed():
