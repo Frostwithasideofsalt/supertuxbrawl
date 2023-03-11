@@ -15,3 +15,6 @@ func _on_debug_pressed():
 
 func _on_settings_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Settings.tscn")
+
+func _on_stagebuilder_pressed():
+	get_tree().change_scene_to_file("res://Scenes/StageBuilderProjectList.tscn")

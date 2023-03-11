@@ -9,6 +9,9 @@ var stages_builtin: Array = []
 var stages_community: Array = []
 var stage_to_load: String = ""
 
+var stage_to_edit: String = ""
+var new_stage: bool = false
+
 var stocks = 1
 
 var players = 2

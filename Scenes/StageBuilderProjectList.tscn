@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1c7vkgxd5jbi"]
+
+[ext_resource type="Script" path="res://Scenes/StageBuilderProjectList.gd" id="1_ny1vn"]
+
+[node name="StageBuilderProjectList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ny1vn")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 108.0
+grow_vertical = 2
+
+[node name="dbg_new" type="Button" parent="."]
+layout_mode = 0
+offset_left = 683.0
+offset_right = 801.0
+offset_bottom = 25.0
+text = "debug_new"
+
+[connection signal="pressed" from="dbg_new" to="." method="_new_button"]

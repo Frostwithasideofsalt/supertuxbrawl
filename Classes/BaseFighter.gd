@@ -103,7 +103,7 @@ func movement(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, DECELERATE / delta)
 	old_velocity = velocity
 	
-	if Input.is_action_just_pressed("ui_focus_next"):
+	if Input.is_action_just_pressed("attack"):
 		var shape = RectangleShape2D.new()
 		shape.size = Vector2(20, 20)
 		add_child(AttackHitbox.new(1.5, shape, looking_right))

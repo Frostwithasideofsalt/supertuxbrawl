@@ -37,7 +37,7 @@ func _ready():
 	add_child(_game_timer)
 	_game_timer.start()
 	target_camera_size = Vector2(ProjectSettings.get("display/window/size/viewport_width"), ProjectSettings.get("display/window/size/viewport_height"))
-	get_node("Stage/StageTileMap").visible = Main.debug
+	get_node("Stage/StageTileMap").set_layer_modulate(0, "#ffffff64" if Main.debug else "#ffffff00")
 
 func _process(_delta):
 	return
@@ -50,9 +50,9 @@ func _process(_delta):
 		target_camera_size = game_viewport.size
 
 func place_fighters():
-	var fighter_paths = ["res://Fighters/%s.tscn", "res://Fighters/%s.tscn"]
+	var fighter_paths = ["res://Fighters/%s.tscn", "user://CustomFighters/%s.tscn"]
 	for i in range(Main.players):
-		var fighter: BaseFighter = load(fighter_paths[int(Main.player_data[i][1])] % Main.player_data[i][0]).instantiate()
+		var fighter: BaseFighter = load(fighter_paths[0] % Main.player_data[i][0]).instantiate()
 		fighter.is_cpu = Main.player_data[i][1]
 		fighter.name = "c" + str(i)
 		fighter.position = stage.get_node("PlayerSpawn" + str(i)).position

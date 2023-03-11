@@ -9,9 +9,5 @@ func _ready():
 		new_item.text = i
 		$GridContainer.add_child(new_item)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func play_stage(stage: String):
 	Main.load_stage(stage)
