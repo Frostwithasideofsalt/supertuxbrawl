@@ -7,6 +7,9 @@ var looking_right: bool = true
 func _init():
 	Main.connect("debug_changed", change_color_shape_visibility)
 
+func _ready():
+	change_color_shape_visibility(Main.debug)
+
 func movement(_delta: float) -> void:
 	move_and_slide()
 

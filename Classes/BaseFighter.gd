@@ -31,6 +31,7 @@ var is_dead: bool = false
 var is_respawning: bool = false
 
 func _ready():
+	super._ready()
 	dodge_timer.one_shot = true
 	add_child(dodge_timer)
 	respawn_timer.one_shot = true
@@ -73,7 +74,7 @@ func movement(delta: float) -> void:
 		self.set_collision_mask_value(2, true)
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and jumps > 0:
-		velocity.y = JUMP_VELOCITY * (1.0 if jumps == MAX_JUMPS else SECONDARY_JUMP_MOD)
+		velocity.y = JUMP_VELOCITY * (1.0 if jumps == MAX_JUMPS or is_on_floor() else SECONDARY_JUMP_MOD)
 		jumps -= 1
 
 	# Get the input direction and handle the movement/deceleration.

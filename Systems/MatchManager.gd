@@ -37,7 +37,7 @@ func _ready():
 	add_child(_game_timer)
 	_game_timer.start()
 	target_camera_size = Vector2(ProjectSettings.get("display/window/size/viewport_width"), ProjectSettings.get("display/window/size/viewport_height"))
-	get_node("Stage/StageTileMap").set_layer_modulate(0, "#ffffff64" if Main.debug else "#ffffff00")
+	change_solids_visibility(Main.debug)
 
 func _process(_delta):
 	return
